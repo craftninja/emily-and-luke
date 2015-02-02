@@ -2,17 +2,25 @@ require 'rails_helper'
 
 feature 'RSVP - ' do
   scenario 'User can enter their name and find their info' do
-    create_user(
+    u1 = create_user(
       :first_name => 'Amber',
       :last_name => 'Corcoran'
     )
+    u2 = create_user(
+      :first_name => 'Edward',
+      :last_name => 'Corcoran'
+    )
+    fam = create_family
+    create_family_membership(fam, u1)
+    create_family_membership(fam, u2)
+
     visit '/'
     click_on 'RSVP'
     fill_in 'First Name', with: 'Amber'
     fill_in 'Last Name', with: 'Corcoran'
     click_on 'Find me'
     expect(page).to have_content('Amber Corcoran')
-    # expect(page).to have_content('Edward Corcoran')
+    expect(page).to have_content('Edward Corcoran')
     expect(page).to have_content('You have not submitted an RSVP')
     expect(page).to have_link("Répondez S'il Vous Plaît")
   end
