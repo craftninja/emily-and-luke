@@ -4,7 +4,7 @@
     <h4>You have not submitted an RSVP</h4>
     <div class='row'>
       <ul class="list-group col-md-offset-2  col-sm-6">
-          <% @user.family_members.each do |member| %>
+          <% @user.family_members.order(:id).each do |member| %>
             <li class="list-group-item">
               <span class="badge">not yet responded</span>
               <%= member.full_name %>
@@ -14,8 +14,25 @@
     </div>
     <div class='row'>
       <%= link_to "Répondez S'il Vous Plaît", edit_rsvp_path(@user.id), class: 'btn btn-info col-md-offset-2' %>
-      </div>
     </div>
   <% else %>
+    <h4>Thank you for submitting an RSVP</h4>
+    <div class='row'>
+      <ul class="list-group col-md-offset-2  col-sm-6">
+          <% @user.family_members.order(:id).each do |member| %>
+            <li class="list-group-item">
+              <% if member.attending %>
+                <span class="badge">will be attending</span>
+              <% else %>
+                <span class="badge">will not be attending</span>
+              <% end %>
+              <%= member.full_name %>
+            </li>
+          <% end %>
+      </ul>
+    </div>
+    <div class='row'>
+      <%= link_to "Update my RSVP", edit_rsvp_path(@user.id), class: 'btn btn-info col-md-offset-2' %>
+    </div>
   <% end %>
 </div>

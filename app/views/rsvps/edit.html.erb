@@ -1,0 +1,29 @@
+<h1>Welcome, <%= @user.full_name %></h1>
+<div class='well'>
+  <%= form_tag(rsvp_path(@user.id), method: :patch, class: '') do %>
+    <div class='row'>
+      <ul class="list-group col-md-offset-2  col-sm-6">
+        <% @user.family_members.order(:id).each do |member| %>
+          <li class="list-group-item">
+            <%= member.full_name %>
+            <div class="radio">
+              <label>
+                <input type="radio" name="<%= member.id %>" id="<%= member.first_name %>" value="true" checked>
+                will be attending
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="<%= member.id %>" id="<%= member.first_name %>" value="false">
+                will not be attending
+              </label>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='row'>
+      <%= submit_tag "Répondez S'il Vous Plaît", class: 'btn btn-info col-md-offset-2' %>
+    </div>
+  <% end %>
+</div>

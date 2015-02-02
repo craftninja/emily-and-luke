@@ -13,4 +13,21 @@ class RsvpsController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    user = User.find(params[:id])
+    params.each do |key, value|
+      guest = User.find_by(:id => key)
+      if guest
+        guest.update(:attending => value)
+      end
+    end
+    attending = user.family_members.where(:attending => true).count
+    flash[:notice] = "You have submitted an RSVP for #{attending}"
+    redirect_to rsvp_path(user)
+  end
+
 end

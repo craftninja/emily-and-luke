@@ -26,18 +26,30 @@ feature 'RSVP - ' do
   end
 
   scenario 'User can RSVP' do
-    pending
+    u1 = create_user(
+      :first_name => 'Jared',
+      :last_name => 'Platzer'
+    )
+    u2 = create_user(
+      :first_name => 'Jared Platzer',
+      :last_name => '+1'
+    )
+    fam = create_family
+    create_family_membership(fam, u1)
+    create_family_membership(fam, u2)
+
     visit '/'
     click_on 'RSVP'
-    fill_in 'First name', with: 'Jared'
-    fill_in 'Last name', with: 'Platzer'
+    fill_in 'First Name', with: 'Jared'
+    fill_in 'Last Name', with: 'Platzer'
     click_on 'Find me'
     expect(page).to have_content('Jared Platzer +1')
     click_on "Répondez S'il Vous Plaît"
-    select '2', from: 'The size of my party will be'
+    choose 'will be attending', match: :first
+    # both are default true :( would love to update this test to be more explicit
     click_on "Répondez S'il Vous Plaît"
     expect(page).to have_content('You have submitted an RSVP for 2')
-    expect(page).to_not have_button("Répondez S'il Vous Plaît")
-    expect(page).to have_button('Update RSVP')
+    expect(page).to_not have_link("Répondez S'il Vous Plaît")
+    expect(page).to have_link('Update my RSVP')
   end
 end
