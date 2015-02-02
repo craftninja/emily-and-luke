@@ -8,8 +8,8 @@ feature 'RSVP - ' do
     )
     visit '/'
     click_on 'RSVP'
-    fill_in 'First name', with: 'Amber'
-    fill_in 'Last name', with: 'Corcoran'
+    fill_in 'First Name', with: 'Amber'
+    fill_in 'Last Name', with: 'Corcoran'
     click_on 'Find me'
     expect(page).to have_content('Amber Corcoran')
     # expect(page).to have_content('Edward Corcoran')

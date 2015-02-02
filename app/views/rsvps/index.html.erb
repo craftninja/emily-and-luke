@@ -1,10 +1,24 @@
 <h1>We really hope you can make it!</h1>
+<div class='well'>
+  <h4 class='col-sm-offset-2'>Let's find your information...</h4>
 
-<h4>Let's find your information...</h4>
-<%= form_tag('/rsvps/find_user') do |f| %>
-  <%= label_tag :first_name %>
-  <%= text_field_tag :first_name %>
-  <%= label_tag :last_name %>
-  <%= text_field_tag :last_name %>
-  <%= submit_tag 'Find me' %>
-<% end %>
+  <%= form_tag('/rsvps/find_user', class: 'form-horizontal') do |f| %>
+    <div class='form-group'>
+      <%= label_tag :first_name, 'First Name', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= text_field_tag :first_name, '', class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= label_tag :last_name, 'Last Name', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= text_field_tag :last_name, '', class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='col-md-offset-2 col-md-10'>
+        <%= submit_tag 'Find me', class: 'btn btn-info' %>
+      </div>
+    </div>
+  <% end %>
+</div>
