@@ -1,0 +1,6 @@
+<h1>Welcome, <%= @user.full_name %></h1>
+<% if @user.attending == nil %>
+  <h4>You have not submitted an RSVP</h4>
+  <%= link_to "Répondez S'il Vous Plaît", edit_rsvp_path(@user.id) %>
+<% else %>
+<% end %>

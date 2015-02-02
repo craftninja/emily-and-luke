@@ -1,0 +1,10 @@
+<h1>We really hope you can make it!</h1>
+
+<h4>Let's find your information...</h4>
+<%= form_tag('/rsvps/find_user') do |f| %>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name %>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name %>
+  <%= submit_tag 'Find me' %>
+<% end %>

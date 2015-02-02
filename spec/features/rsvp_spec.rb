@@ -1,0 +1,35 @@
+require 'rails_helper'
+
+feature 'RSVP - ' do
+  scenario 'User can enter their name and find their info' do
+    create_user(
+      :first_name => 'Amber',
+      :last_name => 'Corcoran'
+    )
+    visit '/'
+    click_on 'RSVP'
+    fill_in 'First name', with: 'Amber'
+    fill_in 'Last name', with: 'Corcoran'
+    click_on 'Find me'
+    expect(page).to have_content('Amber Corcoran')
+    # expect(page).to have_content('Edward Corcoran')
+    expect(page).to have_content('You have not submitted an RSVP')
+    expect(page).to have_link("Répondez S'il Vous Plaît")
+  end
+
+  scenario 'User can RSVP' do
+    pending
+    visit '/'
+    click_on 'RSVP'
+    fill_in 'First name', with: 'Jared'
+    fill_in 'Last name', with: 'Platzer'
+    click_on 'Find me'
+    expect(page).to have_content('Jared Platzer +1')
+    click_on "Répondez S'il Vous Plaît"
+    select '2', from: 'The size of my party will be'
+    click_on "Répondez S'il Vous Plaît"
+    expect(page).to have_content('You have submitted an RSVP for 2')
+    expect(page).to_not have_button("Répondez S'il Vous Plaît")
+    expect(page).to have_button('Update RSVP')
+  end
+end
