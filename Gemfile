@@ -20,6 +20,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.4.4'
+  gem 'dotenv-rails', '~> 1.0.2'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

@@ -4,18 +4,20 @@ class RsvpsController < ApplicationController
   end
 
   def find_user
-    session[:find_user_fail] ||= 0
+    session[:fail_names] ||= []
     users_with_last_name = User.where(:last_name => params[:last_name])
     user = users_with_last_name.find_by(:first_name => params[:first_name])
     if user
-      session[:find_user_fail] = nil
+      session[:fail_names] = nil
       redirect_to rsvp_path(user.id)
     else
-      session[:find_user_fail] += 1
-      if session[:find_user_fail] < 3
+      session[:fail_names] << "#{params[:first_name]} #{params[:last_name]}"
+      if session[:fail_names].count < 3
         flash[:error] = 'Oh no! We could not find your record. Try again.'
         redirect_to rsvps_path
       else
+        AdminMailer.fail_find_invitee(session[:fail_names]).deliver_now
+        session[:fail_names] = nil
         flash[:error] = 'Still could not find you. An email was sent to Emily and Luke, we will be in touch!'
         redirect_to root_path
       end
