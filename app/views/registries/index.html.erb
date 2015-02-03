@@ -1,0 +1,14 @@
+<h1 class="page-header">Registries</h1>
+<div class="row">
+  <% @registries.each do |registry| %>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag registry.img_url %>
+        <div class="caption">
+          <h3><%= link_to registry.title, registry.url %></h3>
+          <p><%= registry.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

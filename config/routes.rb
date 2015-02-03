@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :rsvps
   post '/rsvps/find_user' => 'rsvps#find_user'
   resources :photos
+  resources :registries
 
 end
