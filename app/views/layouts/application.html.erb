@@ -35,11 +35,15 @@
 
 <div class='container'>
   <% if flash.any? %>
-    <div class="alert alert-success" role="alert">
-      <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name %>
+    <% flash.each do |name, msg| -%>
+      <% if name == 'notice' %>
+        <div class="alert alert-success" role="alert">
+      <% else %>
+        <div class="alert alert-danger" role="alert">
       <% end %>
-    </div>
+        <%= content_tag :div, msg, class: name %>
+      </div>
+    <% end %>
   <% end %>
   <%= yield %>
 </div>

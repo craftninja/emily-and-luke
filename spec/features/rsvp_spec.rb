@@ -52,4 +52,21 @@ feature 'RSVP - ' do
     expect(page).to_not have_link("Répondez S'il Vous Plaît")
     expect(page).to have_link('Update my RSVP')
   end
+
+  scenario 'User who is not found is redirected to index 3 times, then l/e is emailed' do
+    visit '/'
+    click_on 'RSVP'
+    fill_in 'First Name', with: 'Frank'
+    fill_in 'Last Name', with: 'Sinatra'
+    click_on 'Find me'
+    expect(page).to have_content('Oh no! We could not find your record. Try again.')
+    fill_in 'First Name', with: 'Frank'
+    fill_in 'Last Name', with: 'Sinatra'
+    click_on 'Find me'
+    expect(page).to have_content('Oh no! We could not find your record. Try again.')
+    fill_in 'First Name', with: 'Frank'
+    fill_in 'Last Name', with: 'Sinatra'
+    click_on 'Find me'
+    expect(page).to have_content('Still could not find you. An email was sent to Emily and Luke, we will be in touch!')
+  end
 end
