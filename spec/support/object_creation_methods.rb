@@ -8,6 +8,7 @@ end
 
 def create_family(options = {})
   Family.create!({
+    :secret_code => rand(1000..9999).to_s
   }.merge(options))
 end
 

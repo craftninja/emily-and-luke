@@ -7,7 +7,7 @@ class RsvpsController < ApplicationController
     session[:fail_names] ||= []
     users_with_last_name = User.where(:last_name => params[:last_name])
     user = users_with_last_name.find_by(:first_name => params[:first_name])
-    if user
+    if user && user.family.secret_code = params[:secret_code]
       session[:fail_names] = nil
       redirect_to rsvp_path(user.id)
     else

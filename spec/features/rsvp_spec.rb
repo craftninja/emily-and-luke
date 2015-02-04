@@ -10,7 +10,7 @@ feature 'RSVP - ' do
       :first_name => 'Edward',
       :last_name => 'Corcoran'
     )
-    fam = create_family
+    fam = create_family(:secret_code => '1234')
     create_family_membership(fam, u1)
     create_family_membership(fam, u2)
 
@@ -18,6 +18,7 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: 'Amber'
     fill_in 'Last Name', with: 'Corcoran'
+    fill_in 'Secret Code', with: '1234'
     click_on 'Find me'
     expect(page).to have_content('Amber Corcoran')
     expect(page).to have_content('Edward Corcoran')
@@ -34,7 +35,7 @@ feature 'RSVP - ' do
       :first_name => 'Jared Platzer',
       :last_name => '+1'
     )
-    fam = create_family
+    fam = create_family(:secret_code => '2345')
     create_family_membership(fam, u1)
     create_family_membership(fam, u2)
 
@@ -42,6 +43,7 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: 'Jared'
     fill_in 'Last Name', with: 'Platzer'
+    fill_in 'Secret Code', with: '2345'
     click_on 'Find me'
     expect(page).to have_content('Jared Platzer +1')
     click_on "Répondez S'il Vous Plaît"
@@ -58,14 +60,17 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
+    fill_in 'Secret Code', with: '1234'
     click_on 'Find me'
     expect(page).to have_content('Oh no! We could not find your record. Try again.')
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
+    fill_in 'Secret Code', with: '6969'
     click_on 'Find me'
     expect(page).to have_content('Oh no! We could not find your record. Try again.')
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
+    fill_in 'Secret Code', with: '9876'
     click_on 'Find me'
     expect(page).to have_content('Still could not find you. Contact us and we can sort it out!')
   end
