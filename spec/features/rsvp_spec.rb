@@ -53,7 +53,7 @@ feature 'RSVP - ' do
     expect(page).to have_link('Update my RSVP')
   end
 
-  scenario 'User who is not found is redirected to index 3 times, then l/e is emailed' do
+  scenario 'User who is not found can submit 3 times before suggesting to contact us' do
     visit '/'
     click_on 'RSVP'
     fill_in 'First Name', with: 'Frank'
@@ -67,6 +67,6 @@ feature 'RSVP - ' do
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
     click_on 'Find me'
-    expect(page).to have_content('Still could not find you. An email was sent to Emily and Luke, we will be in touch!')
+    expect(page).to have_content('Still could not find you. Contact us and we can sort it out!')
   end
 end

@@ -16,9 +16,8 @@ class RsvpsController < ApplicationController
         flash[:error] = 'Oh no! We could not find your record. Try again.'
         redirect_to rsvps_path
       else
-        AdminMailer.fail_find_invitee(session[:fail_names]).deliver_now
         session[:fail_names] = nil
-        flash[:error] = 'Still could not find you. An email was sent to Emily and Luke, we will be in touch!'
+        flash[:error] = 'Still could not find you. Contact us and we can sort it out!'
         redirect_to root_path
       end
     end
