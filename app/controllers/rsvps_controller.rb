@@ -1,4 +1,11 @@
 class RsvpsController < ApplicationController
+  before_action :validate_user, :except => [:index, :find_user]
+  before_action :session_end, :only => [:index, :find_user]
+  helper_method :current_user
+
+  def current_user
+    @current_user ||= User.find_by(:id => session[:current_user])
+  end
 
   def index
   end
@@ -9,6 +16,7 @@ class RsvpsController < ApplicationController
     user = users_with_last_name.find_by(:first_name => params[:first_name])
     if user && user.family.secret_code = params[:secret_code]
       session[:fail_names] = nil
+      session[:current_user] = user.id
       redirect_to rsvp_path(user.id)
     else
       session[:fail_names] << "#{params[:first_name]} #{params[:last_name]}"
@@ -58,6 +66,18 @@ class RsvpsController < ApplicationController
     user.update(:dietary_restrictions => params[:dietary_restrictions])
     flash[:notice] = "You have updated dietary restrictions for #{user.full_name}"
     redirect_to rsvp_path(user)
+  end
+
+  private
+
+  def validate_user
+    if !current_user
+      redirect_to rsvps_path
+    end
+  end
+
+  def session_end
+    session[:current_user] = nil
   end
 
 end

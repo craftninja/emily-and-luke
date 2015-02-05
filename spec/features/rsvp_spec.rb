@@ -83,4 +83,25 @@ feature 'RSVP - ' do
     click_on 'Find me'
     expect(page).to have_content('Still could not find you. Contact us and we can sort it out!')
   end
+
+  scenario 'User cannot only get to RSVP index if they do not enter a valid secret code' do
+    u1 = create_user(
+      :first_name => 'Jared',
+      :last_name => 'Platzer'
+    )
+    fam = create_family(:secret_code => '2345')
+    create_family_membership(fam, u1)
+
+    visit rsvp_path(u1.id)
+    expect(page).to have_content('We really hope you can make it!')
+    expect(page).to_not have_content(u1.full_name)
+
+    visit edit_rsvp_path(u1.id)
+    expect(page).to have_content('We really hope you can make it!')
+    expect(page).to_not have_content(u1.full_name)
+
+    visit rsvp_dietary_restrictions_path(u1.id)
+    expect(page).to have_content('We really hope you can make it!')
+    expect(page).to_not have_content(u1.full_name)
+  end
 end
