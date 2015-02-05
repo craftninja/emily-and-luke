@@ -7,7 +7,7 @@
           <% @user.family_members.order(:id).each do |member| %>
             <li class="list-group-item">
               <span class="badge">not yet responded</span>
-              <%= member.full_name %>
+              <strong><%= member.full_name %></strong>
             </li>
           <% end %>
       </ul>
@@ -21,12 +21,20 @@
       <ul class="list-group col-md-offset-2  col-sm-6">
           <% @user.family_members.order(:id).each do |member| %>
             <li class="list-group-item">
+              <strong><%= member.full_name %></strong>
               <% if member.attending %>
                 <span class="badge">will be attending</span>
+                <div>
+                  <% if member.dietary_restrictions && member.dietary_restrictions != '' %>
+                    Dietary Restrictions: <%= member.dietary_restrictions %>
+                  <% else %>
+                    Dietary Restrictions: none
+                  <% end %>
+                </div>
+                <%= link_to "Update #{member.first_name}'s dietary restrictions", rsvp_dietary_restrictions_path(member.id) %>
               <% else %>
                 <span class="badge">will not be attending</span>
               <% end %>
-              <%= member.full_name %>
             </li>
           <% end %>
       </ul>

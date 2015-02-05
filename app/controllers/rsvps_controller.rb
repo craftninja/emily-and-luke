@@ -49,4 +49,15 @@ class RsvpsController < ApplicationController
     redirect_to rsvp_path(user)
   end
 
+  def edit_dietary_restrictions
+    @user = User.find(params[:id])
+  end
+
+  def update_dietary_restrictions
+    user = User.find(params[:id])
+    user.update(:dietary_restrictions => params[:dietary_restrictions])
+    flash[:notice] = "You have updated dietary restrictions for #{user.full_name}"
+    redirect_to rsvp_path(user)
+  end
+
 end
