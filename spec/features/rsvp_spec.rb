@@ -26,31 +26,32 @@ feature 'RSVP - ' do
     expect(page).to have_link("Répondez S'il Vous Plaît")
   end
 
-  scenario 'User can RSVP' do
+  scenario 'User can RSVP, update address' do
     u1 = create_user(
       :first_name => 'Jared',
       :last_name => 'Platzer'
     )
-    u2 = create_user(
-      :first_name => 'Jared Platzer',
-      :last_name => '+1'
-    )
     fam = create_family(:secret_code => '2345')
     create_family_membership(fam, u1)
-    create_family_membership(fam, u2)
 
     visit '/'
     click_on 'RSVP'
-    fill_in 'First Name', with: 'Jared'
-    fill_in 'Last Name', with: 'Platzer'
-    fill_in 'Secret Code', with: '2345'
+    fill_in 'First Name', with: u1.first_name
+    fill_in 'Last Name', with: u1.last_name
+    fill_in 'Secret Code', with: fam.secret_code
     click_on 'Find me'
-    expect(page).to have_content('Jared Platzer +1')
     click_on "Répondez S'il Vous Plaît"
-    choose 'will be attending', match: :first
-    # both are default true :( would love to update this test to be more explicit
+    fill_in 'Address', with: '1234 Sesame Street'
+    fill_in 'City', with: 'Awesometown'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip', with: '12345'
+    choose 'will be attending'
     click_on "Répondez S'il Vous Plaît"
-    expect(page).to have_content('You have submitted an RSVP for 2')
+    expect(page).to have_content('You have submitted an RSVP for 1')
+    expect(page).to have_content('1234 Sesame Street')
+    expect(page).to have_content('Awesometown')
+    expect(page).to have_content('CO')
+    expect(page).to have_content('12345 ')
     expect(page).to_not have_link("Répondez S'il Vous Plaît")
     expect(page).to have_link('Update my RSVP')
   end

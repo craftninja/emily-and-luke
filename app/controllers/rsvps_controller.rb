@@ -33,6 +33,11 @@ class RsvpsController < ApplicationController
 
   def update
     user = User.find(params[:id])
+    user.family.address = params[:address]
+    user.family.city = params[:city]
+    user.family.state = params[:state]
+    user.family.zip = params[:zip]
+    user.family.save
     params.each do |key, value|
       guest = User.find_by(:id => key)
       if guest

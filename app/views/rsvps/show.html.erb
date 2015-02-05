@@ -31,8 +31,22 @@
           <% end %>
       </ul>
     </div>
+      <% if @user.family.address %>
+        <h4>Your family information</h4>
+        <div class='row'>
+          <ul class="list-group col-md-offset-2 col-sm-6">
+            <li class="list-group-item">
+              <%= @user.family.address %>
+            </li>
+            <li class="list-group-item">
+              <%= @user.family.city %>, <%= @user.family.state %> <%= @user.family.zip %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
     <div class='row'>
       <%= link_to "Update my RSVP", edit_rsvp_path(@user.id), class: 'btn btn-info col-md-offset-2' %>
     </div>
   <% end %>
+
 </div>
