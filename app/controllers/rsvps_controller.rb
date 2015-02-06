@@ -1,6 +1,6 @@
 class RsvpsController < ApplicationController
   before_action :validate_user, :except => [:index, :find_user]
-  skip_before_action :session_end, :except => [:index, :find_user]
+  skip_before_action :rsvp_session_end, :except => [:index, :find_user]
   helper_method :current_user
 
   def current_user
