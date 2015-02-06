@@ -1,4 +1,4 @@
-<h1>Welcome, <%= @user.full_name %></h1>
+<h1 class='page-header'>Welcome, <%= @user.full_name %></h1>
 <div class='well'>
   <%= form_tag(rsvp_path(@user.id), method: :patch, class: 'form-horizontal') do %>
     <div class='form-group'>
