@@ -16,6 +16,6 @@
 * ~~add address~~, phone, email updater to rsvp form
 * ~~add dietary restrictions to rsvp~~
 * ~~if user is not found, error gracefully~~
-* if user uses RSVP index or any other controller, session[:secret_code] is null
-* session[:secret_code] is validated for every action BUT index in the RSVP controller
+* ~~if user uses RSVP index or any other controller, session[:secret_code] is null~~
+* ~~session[:secret_code] is validated for every action EXCEPT index (and find_user) in the RSVP controller~~
 * page-header everywhere
