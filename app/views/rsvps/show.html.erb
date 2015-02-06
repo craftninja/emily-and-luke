@@ -3,7 +3,7 @@
   <% if @user.attending == nil %>
     <h4>You have not submitted an RSVP</h4>
     <div class='row'>
-      <ul class="list-group col-md-offset-2  col-sm-6">
+      <ul class="list-group col-md-offset-2 col-md-6">
           <% @user.family_members.order(:id).each do |member| %>
             <li class="list-group-item">
               <span class="badge">not yet responded</span>
@@ -18,20 +18,24 @@
   <% else %>
     <h4>Thank you for submitting an RSVP</h4>
     <div class='row'>
-      <ul class="list-group col-md-offset-2  col-sm-6">
+      <ul class="list-group col-md-offset-2 col-md-6">
           <% @user.family_members.order(:id).each do |member| %>
             <li class="list-group-item">
               <strong><%= member.full_name %></strong>
               <% if member.attending %>
                 <span class="badge">will be attending</span>
-                <div>
-                  <% if member.dietary_restrictions && member.dietary_restrictions != '' %>
-                    Dietary Restrictions: <%= member.dietary_restrictions %>
-                  <% else %>
-                    Dietary Restrictions: none
-                  <% end %>
+                <div class='well'>
+                  <div class='row'>
+                    <div class='col-md-6'>
+                      <% if member.dietary_restrictions && member.dietary_restrictions != '' %>
+                        Dietary Restrictions: <%= member.dietary_restrictions %>
+                      <% else %>
+                        Dietary Restrictions: none
+                      <% end %>
+                    </div>
+                    <%= link_to "Update #{member.first_name}'s dietary restrictions", rsvp_dietary_restrictions_path(member.id), class: 'btn btn-default col-md-6' %>
+                  </div>
                 </div>
-                <%= link_to "Update #{member.first_name}'s dietary restrictions", rsvp_dietary_restrictions_path(member.id) %>
               <% else %>
                 <span class="badge">will not be attending</span>
               <% end %>

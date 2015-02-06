@@ -20,3 +20,4 @@
 * ~~session[:secret_code] is validated for every action EXCEPT index (and find_user) in the RSVP controller~~
 * ~~page-header everywhere~~
 * ~~secret code is a password field~~
+* make update dietary restrictions a button
