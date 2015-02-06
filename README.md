@@ -18,3 +18,4 @@
 * ~~if user is not found, error gracefully~~
 * if user uses RSVP index or any other controller, session[:secret_code] is null
 * session[:secret_code] is validated for every action BUT index in the RSVP controller
+* page-header everywhere

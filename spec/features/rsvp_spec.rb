@@ -104,4 +104,25 @@ feature 'RSVP - ' do
     expect(page).to have_content('We really hope you can make it!')
     expect(page).to_not have_content(u1.full_name)
   end
+
+  scenario 'When user exits RSVP section, user can only get to RSVP action index' do
+    u1 = create_user(
+      :first_name => 'Jared',
+      :last_name => 'Platzer'
+    )
+    fam = create_family(:secret_code => '2345')
+    create_family_membership(fam, u1)
+
+    visit '/'
+    click_on 'RSVP'
+    fill_in 'First Name', with: u1.first_name
+    fill_in 'Last Name', with: u1.last_name
+    fill_in 'Secret Code', with: fam.secret_code
+    click_on 'Find me'
+    visit '/'
+    visit rsvp_path(u1.id)
+
+    expect(page).to have_content('We really hope you can make it!')
+    expect(page).to_not have_content(u1.full_name)
+  end
 end

@@ -1,6 +1,6 @@
 class RsvpsController < ApplicationController
   before_action :validate_user, :except => [:index, :find_user]
-  before_action :session_end, :only => [:index, :find_user]
+  skip_before_action :session_end, :except => [:index, :find_user]
   helper_method :current_user
 
   def current_user
@@ -74,10 +74,6 @@ class RsvpsController < ApplicationController
     if !current_user
       redirect_to rsvps_path
     end
-  end
-
-  def session_end
-    session[:current_user] = nil
   end
 
 end
