@@ -1,0 +1,22 @@
+<h1 class='page-header'>Please Log In</h1>
+<div class='well'>
+  <%= form_tag login_path, class: 'form-horizontal' do %>
+    <div class='form-group'>
+      <%= label_tag :username, 'Username', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= text_field_tag :username, '', class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= label_tag :password, 'Password', class: 'control-label col-md-2' %>
+      <div class="col-md-4">
+        <%= password_field_tag :password, '', class: 'form-control'  %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='col-md-offset-2 col-md-10'>
+        <%= submit_tag "Let me in!", class: 'btn brn-info' %>
+      </div>
+    </div>
+  <% end %>
+</div>

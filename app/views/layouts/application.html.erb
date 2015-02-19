@@ -24,6 +24,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><%= link_to 'Log out', login_path, method: :delete %></li>
+        <% end %>
         <li><a href="/">Our Wedding</a></li>
         <li><a href="/photos">Photos</a></li>
         <li><a href="/rsvps">RSVP</a></li>

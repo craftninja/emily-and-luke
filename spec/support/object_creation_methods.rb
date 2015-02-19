@@ -26,3 +26,10 @@ def create_registry(options = {})
     :description => 'Davis Clothing Company is a lovely mercantile that has been open for over 100 years. They have all sorts of top end authentic American West clothing, but really shine in hats. Be sure to visit if you are ever in Delta!\n\nWe would love a gift certificate for these guys for some new fancy duds!'
   }.merge(options))
 end
+
+def create_user(password, options = {})
+  User.create!({
+    :username => 'Luke',
+    :password => password
+  }.merge(options))
+end

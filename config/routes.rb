@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   post '/rsvps/find_guest' => 'rsvps#find_guest'
   resources :photos
   resources :registries
+  get '/login' => 'session#new', as: 'login'
+  post '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
 
 end
