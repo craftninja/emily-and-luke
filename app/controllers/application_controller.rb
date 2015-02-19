@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :rsvp_session_end
 
   def rsvp_session_end
-    session[:current_user] = nil
+    session[:current_guest] = nil
   end
 
 end

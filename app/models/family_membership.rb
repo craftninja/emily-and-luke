@@ -1,6 +1,6 @@
 class FamilyMembership < ActiveRecord::Base
   belongs_to :family
-  belongs_to :user
+  belongs_to :guest
 
-  validates_presence_of :family_id, :user_id
+  validates_presence_of :family_id, :guest_id
 end

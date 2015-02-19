@@ -1,5 +1,5 @@
-def create_user(options = {})
-  User.create!({
+def create_guest(options = {})
+  Guest.create!({
     :first_name => 'Amber',
     :last_name => 'Corcoran',
     :email => 'amber@example.com'
@@ -12,10 +12,10 @@ def create_family(options = {})
   }.merge(options))
 end
 
-def create_family_membership(family, user)
+def create_family_membership(family, guest)
   FamilyMembership.create!(
     :family => family,
-    :user => user
+    :guest => guest
   )
 end
 

@@ -1,35 +1,35 @@
-<h1 class='page-header'>Welcome, <%= @user.full_name %></h1>
+<h1 class='page-header'>Welcome, <%= @guest.full_name %></h1>
 <div class='well'>
-  <%= form_tag(rsvp_path(@user.id), method: :patch, class: 'form-horizontal') do %>
+  <%= form_tag(rsvp_path(@guest.id), method: :patch, class: 'form-horizontal') do %>
     <div class='form-group'>
       <h3>Family Information</h3>
       <%= label_tag :address, 'Address', class: 'control-label col-md-2' %>
       <div class='col-md-4'>
-        <%= text_field_tag :address, @user.family.address, class: 'form-control' %>
+        <%= text_field_tag :address, @guest.family.address, class: 'form-control' %>
       </div>
     </div>
     <div class='form-group'>
       <%= label_tag :city, 'City', class: 'control-label col-md-2' %>
       <div class='col-md-4'>
-        <%= text_field_tag :city, @user.family.city, class: 'form-control' %>
+        <%= text_field_tag :city, @guest.family.city, class: 'form-control' %>
       </div>
     </div>
     <div class='form-group'>
       <%= label_tag :state, 'State', class: 'control-label col-md-2' %>
       <div class='col-md-4'>
-        <%= text_field_tag :state, @user.family.state, class: 'form-control' %>
+        <%= text_field_tag :state, @guest.family.state, class: 'form-control' %>
       </div>
     </div>
     <div class='form-group'>
       <%= label_tag :zip, 'Zip', class: 'control-label col-md-2' %>
       <div class='col-md-4'>
-        <%= text_field_tag :zip, @user.family.zip, class: 'form-control' %>
+        <%= text_field_tag :zip, @guest.family.zip, class: 'form-control' %>
       </div>
     </div>
     <div class='row'>
       <h3>Family Member Information</h3>
       <ul class="list-group col-md-offset-2 col-md-6">
-        <% @user.family_members.order(:id).each do |member| %>
+        <% @guest.family_members.order(:id).each do |member| %>
           <li class="list-group-item">
             <%= member.full_name %>
             <div class="radio">

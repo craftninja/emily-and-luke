@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :rsvps
   get 'rsvps/:id/dietary_restrictions' => 'rsvps#edit_dietary_restrictions', as: 'rsvp_dietary_restrictions'
   patch 'rsvps/:id/dietary_restrictions' => 'rsvps#update_dietary_restrictions'
-  post '/rsvps/find_user' => 'rsvps#find_user'
+  post '/rsvps/find_guest' => 'rsvps#find_guest'
   resources :photos
   resources :registries
 

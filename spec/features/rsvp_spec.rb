@@ -2,17 +2,17 @@ require 'rails_helper'
 
 feature 'RSVP - ' do
   scenario 'User can enter their name and find their info' do
-    u1 = create_user(
+    g1 = create_guest(
       :first_name => 'Amber',
       :last_name => 'Corcoran'
     )
-    u2 = create_user(
+    g2 = create_guest(
       :first_name => 'Edward',
       :last_name => 'Corcoran'
     )
     fam = create_family(:secret_code => '1234')
-    create_family_membership(fam, u1)
-    create_family_membership(fam, u2)
+    create_family_membership(fam, g1)
+    create_family_membership(fam, g2)
 
     visit '/'
     click_on 'RSVP'
@@ -27,17 +27,17 @@ feature 'RSVP - ' do
   end
 
   scenario 'User can RSVP, update address and dietary restrictions' do
-    u1 = create_user(
+    g1 = create_guest(
       :first_name => 'Jared',
       :last_name => 'Platzer'
     )
     fam = create_family(:secret_code => '2345')
-    create_family_membership(fam, u1)
+    create_family_membership(fam, g1)
 
     visit '/'
     click_on 'RSVP'
-    fill_in 'First Name', with: u1.first_name
-    fill_in 'Last Name', with: u1.last_name
+    fill_in 'First Name', with: g1.first_name
+    fill_in 'Last Name', with: g1.last_name
     fill_in 'Secret Code', with: fam.secret_code
     click_on 'Find me'
     click_on "Répondez S'il Vous Plaît"
@@ -57,7 +57,7 @@ feature 'RSVP - ' do
     expect(page).to have_link('Update my RSVP')
     expect(page).to have_content('Dietary Restrictions: none')
 
-    click_on "Update #{u1.first_name}'s dietary restrictions"
+    click_on "Update #{g1.first_name}'s dietary restrictions"
     fill_in 'Dietary Restrictions', with: 'No endangered species'
     click_on "That's what I'm eating these days"
 
@@ -85,44 +85,44 @@ feature 'RSVP - ' do
   end
 
   scenario 'User cannot only get to RSVP index if they do not enter a valid secret code' do
-    u1 = create_user(
+    g1 = create_guest(
       :first_name => 'Jared',
       :last_name => 'Platzer'
     )
     fam = create_family(:secret_code => '2345')
-    create_family_membership(fam, u1)
+    create_family_membership(fam, g1)
 
-    visit rsvp_path(u1.id)
+    visit rsvp_path(g1.id)
     expect(page).to have_content('We really hope you can make it!')
-    expect(page).to_not have_content(u1.full_name)
+    expect(page).to_not have_content(g1.full_name)
 
-    visit edit_rsvp_path(u1.id)
+    visit edit_rsvp_path(g1.id)
     expect(page).to have_content('We really hope you can make it!')
-    expect(page).to_not have_content(u1.full_name)
+    expect(page).to_not have_content(g1.full_name)
 
-    visit rsvp_dietary_restrictions_path(u1.id)
+    visit rsvp_dietary_restrictions_path(g1.id)
     expect(page).to have_content('We really hope you can make it!')
-    expect(page).to_not have_content(u1.full_name)
+    expect(page).to_not have_content(g1.full_name)
   end
 
   scenario 'When user exits RSVP section, user can only get to RSVP action index' do
-    u1 = create_user(
+    g1 = create_guest(
       :first_name => 'Jared',
       :last_name => 'Platzer'
     )
     fam = create_family(:secret_code => '2345')
-    create_family_membership(fam, u1)
+    create_family_membership(fam, g1)
 
     visit '/'
     click_on 'RSVP'
-    fill_in 'First Name', with: u1.first_name
-    fill_in 'Last Name', with: u1.last_name
+    fill_in 'First Name', with: g1.first_name
+    fill_in 'Last Name', with: g1.last_name
     fill_in 'Secret Code', with: fam.secret_code
     click_on 'Find me'
     visit '/'
-    visit rsvp_path(u1.id)
+    visit rsvp_path(g1.id)
 
     expect(page).to have_content('We really hope you can make it!')
-    expect(page).to_not have_content(u1.full_name)
+    expect(page).to_not have_content(g1.full_name)
   end
 end

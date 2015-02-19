@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class Guest < ActiveRecord::Base
   has_one :family, through: :family_membership
   has_one :family_membership
 
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   end
 
   def family_members
-    self.family.users
+    self.family.guests
   end
 
 end
