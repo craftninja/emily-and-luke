@@ -61,6 +61,23 @@ feature 'Admin - ' do
     fill_in 'Last Name', with: 'Guest'
     click_on 'Add to Family'
     expect(page).to have_content('Guest')
+    click_on "Update this Family's deets"
+    fill_in 'Secret Code', with: 'chacha'
+    fill_in 'Address', with: '456 Super Drive'
+    fill_in 'City', with: 'Supercity'
+    fill_in 'State', with: 'Colorady'
+    fill_in 'Zip', with: '80203'
+    click_on 'Update this Family'
+    expect(page).to have_content('chacha')
+    expect(page).to have_content('456 Super Drive')
+    expect(page).to have_content('Supercity')
+    expect(page).to have_content('Colorady')
+    expect(page).to have_content('80203')
+    expect(page).to_not have_content('socks')
+    expect(page).to_not have_content('123 Awesome Street')
+    expect(page).to_not have_content('Awesometown')
+    expect(page).to_not have_content('Colorado')
+    expect(page).to_not have_content('80302')
   end
 
 end
