@@ -5,8 +5,8 @@ class FamiliesController < ApplicationController
   end
 
   def create
-    @family = Family.new
-    if @family.update(family_params)
+    @family = Family.new(family_params)
+    if @family.save
       redirect_to new_family_guest_path(@family)
     else
       render :new
