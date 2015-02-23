@@ -1,4 +1,5 @@
 class FamiliesController < ApplicationController
+  before_action :verify_admin
 
   def new
     @family = Family.new

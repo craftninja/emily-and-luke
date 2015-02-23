@@ -80,4 +80,23 @@ feature 'Admin - ' do
     expect(page).to_not have_content('80302')
   end
 
+  scenario 'Only logged in admins have access to family, guest controllers' do
+    visit guests_path
+
+    expect(page).to have_content('Oops! That does not exist')
+    within '.jumbotron' do
+      expect(page).to have_content('Emily and Luke')
+    end
+    expect(page).to_not have_content('Guest List')
+
+    visit new_family_path
+
+    expect(page).to have_content('Oops! That does not exist')
+    within '.jumbotron' do
+      expect(page).to have_content('Emily and Luke')
+    end
+    expect(page).to_not have_content('Guest List')
+  end
+
+
 end

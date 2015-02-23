@@ -1,4 +1,5 @@
 class GuestsController < ApplicationController
+  before_action :verify_admin
 
   def index
     @guests = Guest.all
