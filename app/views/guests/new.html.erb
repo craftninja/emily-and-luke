@@ -1,0 +1,79 @@
+<h1 class='page-header'>Family members thus far added to this family:</h1>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <table class='table'>
+        <thead>
+          <th>
+            Family member
+          </th>
+          <th>
+
+          </th>
+        </thead>
+        <tbody>
+          <% @family.guests.each do |guest| %>
+            <tr>
+              <td>
+                <%= guest.full_name %>
+              </td>
+              <td>
+                <div class="pull-right">
+                <%= link_to 'Delete this Family Member', family_guest_path(@family, guest), method: :delete, class: 'btn btn-danger', data: {confirm: 'EEEK! Are you sure? Did they RSVP? PROCEED WITH CAUTION.'} %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="well">
+      <div class="page-header">
+        <div class="pull-right">
+          <%= link_to "Update this Family's deets", edit_family_path(@family), class: 'btn btn-info' %>
+        </div>
+        <h3>This family's information:</h3>
+      </div>
+      <h4>
+        <dl class="dl-horizontal">
+          <dt>Secret Code:</dt>
+          <dd class='text-success'><%= @family.secret_code %></dd>
+          <dt>Address:</dt>
+          <dd><%= @family.address %></dd>
+          <dt>City:</dt>
+          <dd><%= @family.city %></dd>
+          <dt>State:</dt>
+          <dd><%= @family.state %></dd>
+          <dt>Zip:</dt>
+          <dd><%= @family.zip %></dd>
+        </dl>
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div class='well'>
+  <h3>Add a new member to this Family</h3>
+  <%= form_for [@family, @guest], html: {class: 'form-horizontal'} do |f| %>
+    <div class='form-group'>
+      <%= f.label :first_name, 'First Name', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.label :last_name, 'Last Name', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit "Add to Family", class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+</div>

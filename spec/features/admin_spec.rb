@@ -21,4 +21,46 @@ feature 'Admin - ' do
     end
   end
 
+  scenario 'Admins can manage guests' do
+    password = 'password'
+    admin = create_user(password)
+    visit login_path
+    fill_in 'Username', with: admin.username
+    fill_in 'Password', with: password
+    click_on 'Let me in!'
+    expect(page).to_not have_content('RSVP')
+    click_on 'Guests'
+    click_on 'Add Family'
+    fill_in 'Secret Code', with: 'socks'
+    click_on 'Add Guests to this Family'
+    expect(page).to have_content('socks')
+    fill_in 'First Name', with: 'Jared'
+    fill_in 'Last Name', with: 'Plootzer'
+    click_on 'Add to Family'
+    click_on 'Delete this Family Member'
+    expect(page).to have_content('Guest List')
+    click_on 'Add Family'
+    fill_in 'Secret Code', with: 'socks'
+    fill_in 'Address', with: '123 Awesome Street'
+    fill_in 'City', with: 'Awesometown'
+    fill_in 'State', with: 'Colorado'
+    fill_in 'Zip', with: '80302'
+    click_on 'Add Guests to this Family'
+    expect(page).to have_content('socks')
+    expect(page).to have_content('123 Awesome Street')
+    expect(page).to have_content('Awesometown')
+    expect(page).to have_content('Colorado')
+    expect(page).to have_content('80302')
+    fill_in 'First Name', with: 'Jared'
+    fill_in 'Last Name', with: 'Platzer'
+    click_on 'Add to Family'
+    click_on 'Guests'
+    expect(page).to have_content('Jared Platzer')
+    click_on 'See this Family'
+    fill_in 'First Name', with: 'Jared Platzer'
+    fill_in 'Last Name', with: 'Guest'
+    click_on 'Add to Family'
+    expect(page).to have_content('Guest')
+  end
+
 end
