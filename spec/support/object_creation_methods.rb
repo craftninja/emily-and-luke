@@ -27,7 +27,7 @@ def create_registry(options = {})
   }.merge(options))
 end
 
-def create_user(password, options = {})
+def create_user(password = 'password', options = {})
   User.create!({
     :username => 'Luke',
     :password => password

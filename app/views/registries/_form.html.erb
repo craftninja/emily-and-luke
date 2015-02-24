@@ -1,0 +1,33 @@
+<div class='well'>
+  <%= form_for @registry, html: {class: 'form-horizontal'} do |f| %>
+    <div class='form-group'>
+      <%= f.label :img_url, 'Image URL', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :img_url, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.label :title, class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.label :url, 'URL', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :url, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.label :description, class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :description, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit button, class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+</div>
