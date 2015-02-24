@@ -56,6 +56,7 @@
 </div>
 
 <div class='well'>
+  <%= render partial: 'shared/errors', locals: {object: @guest } %>
   <h3>Add a new member to this Family</h3>
   <%= form_for [@family, @guest], html: {class: 'form-horizontal'} do |f| %>
     <div class='form-group'>

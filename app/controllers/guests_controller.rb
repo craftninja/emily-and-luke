@@ -12,10 +12,10 @@ class GuestsController < ApplicationController
 
   def create
     @guest = Guest.new
+    @family = Family.find(params[:family_id])
     if @guest.update(guest_params)
-      family = Family.find(params[:family_id])
-      FamilyMembership.create!(:guest_id => @guest.id, :family_id => family.id)
-      redirect_to new_family_guest_path(family)
+      FamilyMembership.create!(:guest_id => @guest.id, :family_id => @family.id)
+      redirect_to new_family_guest_path(@family)
     else
       render :new
     end
