@@ -31,6 +31,8 @@ feature 'Admin - ' do
     expect(page).to_not have_content('RSVP')
     click_on 'Guests'
     click_on 'Add Family'
+    click_on 'Add Guests to this Family'
+    expect(page).to have_content("Secret code can't be blank")
     fill_in 'Secret Code', with: 'socks'
     click_on 'Add Guests to this Family'
     expect(page).to have_content('socks')
