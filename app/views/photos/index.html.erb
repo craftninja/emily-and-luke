@@ -1,4 +1,35 @@
-<h1 class='page-header'>Photos</h1>
+<div class="page-header">
+  <% if current_user %>
+    <div class="pull-right">
+      <%= link_to 'Add Photo', new_photo_path, class: 'btn btn-info' %>
+    </div>
+  <% end %>
+  <h1>Photos</h1>
+</div>
+
+<div class="row">
+  <% @photos.each_with_index do |photo, index| %>
+    <div class="col-md-4">
+      <%= link_to '#', class: 'thumbnail' do %>
+        <%= image_tag photo.img_url %>
+        <div class="caption">
+          <h3><%= photo.date %></h3>
+          <p>
+            <%= photo.caption %>
+          </p>
+        </div>
+      <% end %>
+      <% if current_user %>
+        <%= link_to 'Edit', edit_photo_path(photo), class: 'btn btn-info' %>
+        <%= link_to 'Delete', photo_path(photo), method: :delete, class: 'btn btn-warning' %>
+      <% end %>
+    </div>
+    <% if (index + 1) % 4 == 0 %>
+</div>
+<div class='row'>
+    <% end %>
+  <% end %>
+</div>
 
 <div class="row">
   <div class="col-xs-6 col-md-4">

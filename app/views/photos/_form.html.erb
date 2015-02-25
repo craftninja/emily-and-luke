@@ -1,0 +1,29 @@
+<%= render partial: 'shared/errors', locals: {object: @photo} %>
+
+<div class='well'>
+  <%= form_for @photo, html: {class: 'form-horizontal'} do |f| %>
+    <div class='form-group'>
+      <%= f.label :img_url, 'Image URL', class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :img_url, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.label :date, class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.date_field :date, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <%= f.label :caption, class: 'control-label col-md-2' %>
+      <div class='col-md-4'>
+        <%= f.text_field :caption, class: 'form-control' %>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class='col-md-offset-2 col-md-10'>
+        <%= f.submit button, class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+</div>
