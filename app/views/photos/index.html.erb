@@ -21,7 +21,7 @@
       <% end %>
       <% if current_user %>
         <%= link_to 'Edit', edit_photo_path(photo), class: 'btn btn-info' %>
-        <%= link_to 'Delete', photo_path(photo), method: :delete, class: 'btn btn-warning' %>
+        <%= link_to 'Delete', photo_path(photo), method: :delete, class: 'btn btn-danger' %>
       <% end %>
     </div>
     <% if (index + 1) % 4 == 0 %>
