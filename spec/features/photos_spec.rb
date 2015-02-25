@@ -32,7 +32,7 @@ feature 'Photos - ' do
     fill_in 'Caption', with: 'Hey, wait, that is a logo'
     click_on 'Add this Photo'
     expect(page).to have_content('Photo was successfully added')
-    expect(page).to have_content(Date.today)
+    expect(page).to have_content(Date.today.strftime("%B %Y"))
     expect(page).to have_content('Hey, wait, that is a logo')
     click_on 'Edit'
     fill_in 'Caption', with: 'Where is the photo'

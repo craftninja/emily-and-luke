@@ -13,7 +13,7 @@
       <%= link_to '#', class: 'thumbnail' do %>
         <%= image_tag photo.img_url %>
         <div class="caption">
-          <h3><%= photo.date %></h3>
+          <h3><%= photo.date.strftime("%B %Y") %></h3>
           <p>
             <%= photo.caption %>
           </p>
