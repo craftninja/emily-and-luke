@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/craftninja/emily-and-luke.svg)](https://travis-ci.org/craftninja/emily-and-luke)
+
 #### How the hex do you set this up?
 
 * Fork, Clone, Bundle
