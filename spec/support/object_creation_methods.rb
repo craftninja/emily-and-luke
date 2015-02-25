@@ -34,3 +34,11 @@ def create_user(password = 'password', options = {})
     :password => password
   }.merge(options))
 end
+
+def create_photo(options = {})
+  Photo.create!({
+    :img_url => 'http://www.springhillpressmaps.com/us/colorado/deltamontrose/adpages/images/Davis-Clothing-Company.png',
+    :date => Date.today,
+    :caption => 'Thats not Luke and Emily...'
+  }.merge(options))
+end

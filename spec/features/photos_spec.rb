@@ -2,12 +2,19 @@ require 'rails_helper'
 
 feature 'Photos - ' do
   scenario 'User can see photos' do
+    photo = create_photo
+    photo_date = photo.date.strftime("%B %Y")
     visit '/'
     click_on 'Photos'
     expect(page).to have_css('.thumbnail')
     expect(page).to_not have_content('Add Photo')
     expect(page).to_not have_content('Edit')
     expect(page).to_not have_content('Delete')
+    click_on photo_date
+    within '.page-header' do
+      expect(page).to have_content(photo_date)
+      expect(page).to have_content(photo.caption)
+    end
     visit new_photo_path
     expect(page).to_not have_content('New Photo')
     expect(page).to have_content('Oops! That does not exist')

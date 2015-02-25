@@ -1,8 +1,12 @@
 class PhotosController < ApplicationController
-  before_action :verify_admin, except: [:index]
+  before_action :verify_admin, except: [:index, :show]
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order(:date).reverse
+  end
+
+  def show
+    @photo = Photo.find(params[:id])
   end
 
   def new
