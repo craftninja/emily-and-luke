@@ -17,3 +17,10 @@
 @import "bootstrap";
 
 body { padding-top: 70px; }
+
+.jumbotron {
+  padding-bottom: 60em;
+  background-image: url(https://s3-us-west-2.amazonaws.com/emily-and-luke/engagement_el_01.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
