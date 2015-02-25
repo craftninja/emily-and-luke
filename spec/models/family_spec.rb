@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'family'
 
-describe 'Family' do
+describe 'Family -' do
   it 'validates presence of secret code' do
     family = Family.new
     expect(family.valid?).to be(false)

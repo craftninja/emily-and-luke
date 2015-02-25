@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'guest'
 
-describe 'Guest' do
+describe 'Guest -' do
   it 'validates presence of first and last name' do
     guest = Guest.new
     expect(guest.valid?).to be(false)

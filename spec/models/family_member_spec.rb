@@ -1,6 +1,8 @@
-require 'spec_helper'
+require 'family'
+require 'guest'
+require 'family_membership'
 
-describe 'FamilyMember' do
+describe 'FamilyMembership -' do
   it 'requires a family id and user id' do
     g = create_guest
     f = create_family

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'registry'
 
 describe 'Registry -' do
   it 'validates presence of image url, title, url and description' do
