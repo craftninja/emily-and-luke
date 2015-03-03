@@ -16,5 +16,8 @@ feature 'Welcome page - ' do
       expect(page).to have_link('RSVP')
       expect(page).to have_link('Registry')
     end
+    click_on 'Our Wedding'
+    expect(page).to_not have_content('May 16th, 2015')
+    expect(page).to_not have_content('Lyons, Colorado')
   end
 end
