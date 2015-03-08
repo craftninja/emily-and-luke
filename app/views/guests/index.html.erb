@@ -17,6 +17,9 @@
       RSVP status
     </th>
     <th>
+      Address
+    </th>
+    <th>
 
     </th>
   </thead>
@@ -36,6 +39,13 @@
             <span class="glyphicon glyphicon-remove text-danger" aria-label="no"></span>
           <% else %>
             <span class="glyphicon glyphicon-question-sign text-warning" aria-label="not yet responded"></span>
+          <% end %>
+        </td>
+        <td>
+          <% if guest.family.address != '' %>
+            <span class="glyphicon glyphicon-ok text-success" aria-label="yes"></span>
+          <% else %>
+            <span class="glyphicon glyphicon-remove text-danger" aria-label="no"></span>
           <% end %>
         </td>
         <td>
