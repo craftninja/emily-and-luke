@@ -3,6 +3,8 @@
     <%= link_to 'Add Family', new_family_path, class: 'btn btn-info'%>
   </div>
   <h1>Guest List</h1>
+  <h3>Attending: <%= @guests.count {|guest| guest.attending == true} %></h3>
+  <h3>Not Yet Responded: <%= @guests.count {|guest| guest.attending == nil} %></h3>
 </div>
 
 <table class='table'>
