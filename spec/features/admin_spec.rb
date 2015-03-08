@@ -16,9 +16,7 @@ feature 'Admin - ' do
       click_on 'Log out'
     end
     expect(page).to_not have_content('Log out')
-    within '.jumbotron' do
-      expect(page).to have_content('Emily and Luke May 16th, 2015 in Lyons, Colorado')
-    end
+    expect(current_path).to eq root_path
   end
 
   scenario 'Admins can manage guests' do
@@ -88,17 +86,13 @@ feature 'Admin - ' do
     visit guests_path
 
     expect(page).to have_content('Oops! That does not exist')
-    within '.jumbotron' do
-      expect(page).to have_content('Emily and Luke')
-    end
+    expect(current_path).to eq root_path
     expect(page).to_not have_content('Guest List')
 
     visit new_family_path
 
     expect(page).to have_content('Oops! That does not exist')
-    within '.jumbotron' do
-      expect(page).to have_content('Emily and Luke')
-    end
+    expect(current_path).to eq root_path
     expect(page).to_not have_content('Guest List')
   end
 

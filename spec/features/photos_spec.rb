@@ -18,9 +18,7 @@ feature 'Photos - ' do
     visit new_photo_path
     expect(page).to_not have_content('New Photo')
     expect(page).to have_content('Oops! That does not exist')
-    within '.jumbotron' do
-      expect(page).to have_content('Emily and Luke')
-    end
+    expect(current_path).to eq root_path
   end
 
   scenario 'Admin can manage photos' do
