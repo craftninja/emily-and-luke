@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get '/invitation' => 'welcome#invitation'
+  get '/map' => 'welcome#map'
+  get '/lodgings' => 'welcome#lodgings'
+  get '/sights' => 'welcome#sights'
   resources :rsvps
   get 'rsvps/:id/dietary_restrictions' => 'rsvps#edit_dietary_restrictions', as: 'rsvp_dietary_restrictions'
   patch 'rsvps/:id/dietary_restrictions' => 'rsvps#update_dietary_restrictions'
