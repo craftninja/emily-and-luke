@@ -2,7 +2,11 @@ class GuestsController < ApplicationController
   before_action :verify_admin
 
   def index
-    @guests = Guest.all
+    # Order by guest.family.id
+    @guests = Guest.all.sort_by { |guest| guest.family.id}
+
+    # Order by last name
+    # @guests = Guest.all.order(:last_name)
   end
 
   def new

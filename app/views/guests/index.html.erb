@@ -8,6 +8,9 @@
 <table class='table'>
   <thead>
     <th>
+      Code
+    </th>
+    <th>
       Guest
     </th>
     <th>
@@ -20,6 +23,9 @@
   <tbody>
     <% @guests.each do |guest| %>
       <tr>
+        <td>
+          <%= guest.family.secret_code %>
+        </td>
         <td>
           <%= guest.full_name %>
         </td>
