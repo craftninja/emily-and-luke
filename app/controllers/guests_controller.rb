@@ -37,6 +37,12 @@ class GuestsController < ApplicationController
     end
   end
 
+  def invite_update
+    family = Guest.find(params[:id]).family
+    family.update(:invitation => params[:family][:invitation])
+    redirect_to guests_path
+  end
+
   private
 
   def guest_params

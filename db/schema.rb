@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225023433) do
+ActiveRecord::Schema.define(version: 20150308162444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20150225023433) do
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "secret_code", null: false
+    t.string   "secret_code",                 null: false
+    t.boolean  "invitation",  default: false, null: false
   end
 
   create_table "family_memberships", force: :cascade do |t|

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   get '/guests' => 'guests#index', as: 'guests'
+  patch '/guests/:id/invite_update' => 'guests#invite_update', as: 'invite_update'
   resources :families do
     resources :guests, except: [:index]
   end

@@ -20,6 +20,9 @@
       Address
     </th>
     <th>
+      Invitation
+    </th>
+    <th>
 
     </th>
   </thead>
@@ -46,6 +49,14 @@
             <span class="glyphicon glyphicon-ok text-success" aria-label="yes"></span>
           <% else %>
             <span class="glyphicon glyphicon-remove text-danger" aria-label="no"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= form_for guest.family, url: invite_update_path(guest), html: {class: 'form-inline'} do |f| %>
+            <div class="form-group">
+              <%= f.select(:invitation, [['Created', :true], ['Not Yet Created', :false]], {}, {class: 'form-control'})  %>
+            </div>
+            <%= f.submit 'Update Invite Status', class: 'btn btn-success' %>
           <% end %>
         </td>
         <td>
