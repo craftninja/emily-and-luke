@@ -18,7 +18,7 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: 'Amber'
     fill_in 'Last Name', with: 'Corcoran'
-    fill_in 'Secret Code', with: '1234'
+    fill_in 'Invitation Code', with: '1234'
     click_on 'Find me'
     expect(page).to have_content('Amber Corcoran')
     expect(page).to have_content('Edward Corcoran')
@@ -38,7 +38,7 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: g1.first_name
     fill_in 'Last Name', with: g1.last_name
-    fill_in 'Secret Code', with: fam.secret_code
+    fill_in 'Invitation Code', with: fam.secret_code
     click_on 'Find me'
     click_on "Répondez S'il Vous Plaît"
     fill_in 'Address', with: '1234 Sesame Street'
@@ -69,17 +69,17 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
-    fill_in 'Secret Code', with: '1234'
+    fill_in 'Invitation Code', with: '1234'
     click_on 'Find me'
     expect(page).to have_content('Oh no! We could not find your record. Try again.')
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
-    fill_in 'Secret Code', with: '6969'
+    fill_in 'Invitation Code', with: '6969'
     click_on 'Find me'
     expect(page).to have_content('Oh no! We could not find your record. Try again.')
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'Sinatra'
-    fill_in 'Secret Code', with: '9876'
+    fill_in 'Invitation Code', with: '9876'
     click_on 'Find me'
     expect(page).to have_content('Still could not find you. Contact us and we can sort it out!')
   end
@@ -117,7 +117,7 @@ feature 'RSVP - ' do
     click_on 'RSVP'
     fill_in 'First Name', with: g1.first_name
     fill_in 'Last Name', with: g1.last_name
-    fill_in 'Secret Code', with: fam.secret_code
+    fill_in 'Invitation Code', with: fam.secret_code
     click_on 'Find me'
     visit '/'
     visit rsvp_path(g1.id)

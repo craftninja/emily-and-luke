@@ -31,7 +31,7 @@ feature 'Admin - ' do
     click_on 'Add Family'
     click_on 'Add Guests to this Family'
     expect(page).to have_content("Secret code can't be blank")
-    fill_in 'Secret Code', with: 'socks'
+    fill_in 'Invitation Code', with: 'socks'
     click_on 'Add Guests to this Family'
     expect(page).to have_content('socks')
     click_on 'Add to Family'
@@ -42,7 +42,7 @@ feature 'Admin - ' do
     click_on 'Delete this Family Member'
     expect(page).to have_content('Guest List')
     click_on 'Add Family'
-    fill_in 'Secret Code', with: 'socks'
+    fill_in 'Invitation Code', with: 'socks'
     fill_in 'Address', with: '123 Awesome Street'
     fill_in 'City', with: 'Awesometown'
     fill_in 'State', with: 'Colorado'
@@ -64,7 +64,7 @@ feature 'Admin - ' do
     click_on 'Add to Family'
     expect(page).to have_content('Guest')
     click_on "Update this Family's deets"
-    fill_in 'Secret Code', with: 'chacha'
+    fill_in 'Invitation Code', with: 'chacha'
     fill_in 'Address', with: '456 Super Drive'
     fill_in 'City', with: 'Supercity'
     fill_in 'State', with: 'Colorady'
