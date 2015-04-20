@@ -3,7 +3,7 @@
     = form_for @gift, html: {class: 'form-inline'} do |f|
       .form-group
         = f.label :guest
-        = f.collection_select(:family_id, Guest.all, :family_id, :full_name, {}, {class: 'form-control'})
+        = f.collection_select(:family_id, Guest.all.sort_by {|guest| guest.full_name}, :family_id, :full_name, {}, {class: 'form-control'})
       .form-group
         = f.label :gift
         = f.text_field :description, class: 'form-control'
