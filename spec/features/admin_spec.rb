@@ -89,7 +89,8 @@ feature 'Admin - ' do
     password = 'password'
     admin = create_user(password)
     login(password, admin)
-    visit gifts_path
+    visit guests_path
+    click_on 'Gifts'
     select guest.full_name, from: :gift_family_id
     fill_in :gift_description, with: 'Awesome thing'
     click_on 'Thank you!'

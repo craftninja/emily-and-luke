@@ -1,6 +1,7 @@
 <div class="page-header">
   <div class="pull-right">
     <%= link_to 'Add Family', new_family_path, class: 'btn btn-info'%>
+    <%= link_to 'Gifts', gifts_path, class: 'btn btn-warning' %>
   </div>
   <h1>Guest List</h1>
   <h3>Attending: <%= @guests.count {|guest| guest.attending == true} %></h3>
