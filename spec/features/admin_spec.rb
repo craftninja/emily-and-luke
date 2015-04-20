@@ -102,7 +102,7 @@ feature 'Admin - ' do
     end
   end
 
-  scenario 'Only logged in admins have access to family, guest controllers' do
+  scenario 'Only logged in admins have access to family, guest, gift controllers' do
     visit guests_path
 
     expect(page).to have_content('Oops! That does not exist')
@@ -114,6 +114,12 @@ feature 'Admin - ' do
     expect(page).to have_content('Oops! That does not exist')
     expect(current_path).to eq root_path
     expect(page).to_not have_content('Guest List')
+
+    visit gifts_path
+
+    expect(page).to have_content('Oops! That does not exist')
+    expect(current_path).to eq root_path
+    expect(page).to_not have_content('Gift List')
   end
 
 

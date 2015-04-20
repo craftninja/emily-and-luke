@@ -1,4 +1,5 @@
 class GiftsController < ApplicationController
+  before_action :verify_admin
 
   def index
     @gift = Gift.new
