@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   resources :families do
     resources :guests, except: [:index]
   end
-
+  resources :gifts, only: [:index, :create]
 end

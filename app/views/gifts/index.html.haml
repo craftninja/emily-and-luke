@@ -1,0 +1,30 @@
+.page-header
+  .pull-right
+    = form_for @gift, html: {class: 'form-inline'} do |f|
+      .form-group
+        = f.label :guest
+        = f.collection_select(:family_id, Guest.all, :family_id, :full_name, {}, {class: 'form-control'})
+      .form-group
+        = f.label :gift
+        = f.text_field :description, class: 'form-control'
+      .form-group
+        = f.submit 'Thank you!', class: 'btn btn-success'
+  %h1 Gift List
+
+%table.table
+  %thead
+    %th Family
+    %th Gift
+    %th Thank You Sent?
+  %tbody
+    - @gifts.each do |gift|
+      %tr
+        %td
+          = gift.from
+        %td
+          = gift.description
+        %td
+          - if gift.thank_you_sent
+            .glyphicon.glyphicon-ok.text-success
+          -else
+            .glyphicon.glyphicon-remove.text-danger

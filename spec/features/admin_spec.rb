@@ -82,6 +82,25 @@ feature 'Admin - ' do
     expect(page).to_not have_content('80302')
   end
 
+  scenario 'Admins can log gift information' do
+    guest = create_guest
+    family = create_family
+    family_membership = create_family_membership(family, guest)
+    password = 'password'
+    admin = create_user(password)
+    login(password, admin)
+    visit gifts_path
+    select guest.full_name, from: :gift_family_id
+    fill_in :gift_description, with: 'Awesome thing'
+    click_on 'Thank you!'
+    within 'table' do
+      expect(page).to have_content guest.full_name
+      expect(page).to have_content 'Awesome thing'
+      expect(page).to have_content 'Thank You Sent?'
+      expect(page).to have_css '.glyphicon-remove.text-danger'
+    end
+  end
+
   scenario 'Only logged in admins have access to family, guest controllers' do
     visit guests_path
 

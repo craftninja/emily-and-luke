@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'bcrypt', '~> 3.1.7'
 gem 'slim', '~> 3.0.3'
+gem 'haml', '~> 4.0.6'
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'

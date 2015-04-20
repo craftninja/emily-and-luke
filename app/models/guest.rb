@@ -12,4 +12,8 @@ class Guest < ActiveRecord::Base
     self.family.guests
   end
 
+  def family_id
+    self.family.id
+  end
+
 end
