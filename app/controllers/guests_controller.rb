@@ -2,8 +2,14 @@ class GuestsController < ApplicationController
   before_action :verify_admin
 
   def index
+    # Order by attendance
+    attending = Guest.where(:attending => true).sort_by { |guest| guest.family.id}
+    no_response = Guest.where(:attending => nil).sort_by { |guest| guest.family.id}
+    not_attending = Guest.where(:attending => false).sort_by { |guest| guest.family.id}
+    @guests = attending + no_response + not_attending
+
     # Order by guest.family.id
-    @guests = Guest.all.sort_by { |guest| guest.family.id}
+    # @guests = Guest.all.sort_by { |guest| guest.family.id}
 
     # Order by last name
     # @guests = Guest.all.order(:last_name)
