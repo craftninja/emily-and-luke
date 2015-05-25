@@ -20,7 +20,7 @@
     - @gifts.each do |gift|
       %tr
         %td
-          = gift.from
+          = link_to gift.from, new_family_guest_path(gift.family_id)
         %td
           = gift.description
         %td
@@ -28,3 +28,4 @@
             .glyphicon.glyphicon-ok.text-success
           -else
             .glyphicon.glyphicon-remove.text-danger
+          = link_to "Did it", gift_path(gift), method: :patch, class: 'btn btn-success'

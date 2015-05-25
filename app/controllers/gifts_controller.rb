@@ -3,7 +3,7 @@ class GiftsController < ApplicationController
 
   def index
     @gift = Gift.new
-    @gifts = Gift.all
+    @gifts = Gift.all.order(:family_id)
   end
 
   def create
@@ -13,6 +13,13 @@ class GiftsController < ApplicationController
     else
       render :index
     end
+  end
+
+  def update
+    @gift = Gift.find(params[:id])
+    @gift.thank_you_sent = true
+    @gift.save
+    redirect_to gifts_path
   end
 
   def gift_params
