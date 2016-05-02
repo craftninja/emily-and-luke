@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/craftninja/emily-and-luke.svg)](https://travis-ci.org/craftninja/emily-and-luke)
 
+#### Check out the live app!
+
+http://emily-and-luke.com/
+
 #### How the hex do you set this up?
 
 * Fork, Clone, Bundle
