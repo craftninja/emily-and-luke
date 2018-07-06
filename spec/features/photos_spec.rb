@@ -31,7 +31,8 @@ feature 'Photos - ' do
       expect(page).to have_content('New Photo')
     end
     click_on 'Add this Photo'
-    expect(page).to have_content("Img url can't be blank Date can't be blank")
+    expect(page).to have_content("Img url can't be blank")
+    expect(page).to have_content("Date can't be blank")
     fill_in 'Image URL', with: 'https://s3-us-west-2.amazonaws.com/emily-and-luke/registry_logo_amazon.png'
     fill_in 'Date', with: Date.today
     fill_in 'Caption', with: 'Hey, wait, that is a logo'

@@ -1,4 +1,4 @@
-class CreateRegistry < ActiveRecord::Migration
+class CreateRegistry < ActiveRecord::Migration[4.2]
   def change
     create_table :registries do |t|
       t.string :img_url

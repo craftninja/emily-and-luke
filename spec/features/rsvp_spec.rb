@@ -52,7 +52,7 @@ feature 'RSVP - ' do
     expect(page).to have_content('1234 Sesame Street')
     expect(page).to have_content('Awesometown')
     expect(page).to have_content('CO')
-    expect(page).to have_content('12345 ')
+    expect(page).to have_content('12345')
     expect(page).to_not have_link("Répondez S'il Vous Plaît")
     expect(page).to have_link('Update my RSVP')
     expect(page).to have_content('Dietary Restrictions: none')

@@ -1,4 +1,4 @@
-class ChangeRegistriesNullFalse < ActiveRecord::Migration
+class ChangeRegistriesNullFalse < ActiveRecord::Migration[4.2]
   def change
     change_column_null :registries, :description, false
     change_column_null :registries, :url, false

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,69 +10,69 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420011535) do
+ActiveRecord::Schema.define(version: 2015_04_20_011535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "families", force: :cascade do |t|
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
+  create_table "families", id: :serial, force: :cascade do |t|
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "secret_code",                 null: false
-    t.boolean  "invitation",  default: false, null: false
+    t.string "secret_code", null: false
+    t.boolean "invitation", default: false, null: false
   end
 
-  create_table "family_memberships", force: :cascade do |t|
-    t.integer  "family_id",  null: false
-    t.integer  "guest_id",   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "gifts", force: :cascade do |t|
-    t.string   "description",                    null: false
-    t.integer  "family_id",                      null: false
-    t.boolean  "thank_you_sent", default: false, null: false
+  create_table "family_memberships", id: :serial, force: :cascade do |t|
+    t.integer "family_id", null: false
+    t.integer "guest_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "guests", force: :cascade do |t|
-    t.string   "first_name",           null: false
-    t.string   "last_name",            null: false
-    t.string   "email"
-    t.boolean  "attending"
-    t.string   "dietary_restrictions"
+  create_table "gifts", id: :serial, force: :cascade do |t|
+    t.string "description", null: false
+    t.integer "family_id", null: false
+    t.boolean "thank_you_sent", default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.string   "img_url",    null: false
-    t.date     "date",       null: false
-    t.string   "caption"
+  create_table "guests", id: :serial, force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email"
+    t.boolean "attending"
+    t.string "dietary_restrictions"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "registries", force: :cascade do |t|
-    t.string   "img_url",     null: false
-    t.string   "title",       null: false
-    t.string   "url",         null: false
-    t.text     "description", null: false
+  create_table "photos", id: :serial, force: :cascade do |t|
+    t.string "img_url", null: false
+    t.date "date", null: false
+    t.string "caption"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+  create_table "registries", id: :serial, force: :cascade do |t|
+    t.string "img_url", null: false
+    t.string "title", null: false
+    t.string "url", null: false
+    t.text "description", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

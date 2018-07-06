@@ -29,7 +29,10 @@ feature 'Registry - ' do
       expect(page).to have_content('New Registry')
     end
     click_on 'Create this Registry'
-    expect(page).to have_content("Img url can't be blank Title can't be blank Url can't be blank Description can't be blank")
+    expect(page).to have_content("Img url can't be blank")
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Url can't be blank")
+    expect(page).to have_content("Description can't be blank")
     fill_in 'Image URL', with: 'https://s3-us-west-2.amazonaws.com/emily-and-luke/registry_logo_amazon.png'
     fill_in 'Title', with: 'Amazing'
     fill_in 'URL', with: 'http://www.amazon.com/registry/wedding/38P8RW2N4NIIM'

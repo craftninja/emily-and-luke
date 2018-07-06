@@ -1,4 +1,4 @@
-class CreateFamilyMemberships < ActiveRecord::Migration
+class CreateFamilyMemberships < ActiveRecord::Migration[4.2]
   def change
     create_table :family_memberships do |t|
       t.belongs_to :family

@@ -1,4 +1,4 @@
-class AddInvitationToFamily < ActiveRecord::Migration
+class AddInvitationToFamily < ActiveRecord::Migration[4.2]
 
   class MigrationFamily < ActiveRecord::Base
     self.table_name = :families

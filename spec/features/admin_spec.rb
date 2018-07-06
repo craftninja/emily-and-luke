@@ -35,7 +35,8 @@ feature 'Admin - ' do
     click_on 'Add Guests to this Family'
     expect(page).to have_content('socks')
     click_on 'Add to Family'
-    expect(page).to have_content("First name can't be blank Last name can't be blank")
+    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content("Last name can't be blank")
     fill_in 'First Name', with: 'Jared'
     fill_in 'Last Name', with: 'Plootzer'
     click_on 'Add to Family'
